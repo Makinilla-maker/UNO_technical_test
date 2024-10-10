@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scenes/Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/MainScene.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/uno reverse card.jpg" type="Texture" id=3]
+[ext_resource path="res://Scenes/UNOSign.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Card_p2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Card_skip.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/TurnIndicator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/PlayAgain.tscn" type="PackedScene" id=8]
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource( 2 )
+card_scene = ExtResource( 1 )
+card_scene_p2 = ExtResource( 5 )
+card_scene_skip = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 4068.0
+margin_bottom = 3279.0
+
+[node name="DrawButton" type="Button" parent="."]
+margin_left = 56.0
+margin_top = 189.0
+margin_right = 316.0
+margin_bottom = 575.0
+rect_scale = Vector2( 0.5, 0.5 )
+icon = ExtResource( 3 )
+flat = true
+
+[node name="PlayerCards" type="Node2D" parent="."]
+
+[node name="AICards" type="Node2D" parent="."]
+
+[node name="Last_cart" type="Node2D" parent="."]
+
+[node name="UNOSign" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 499, 301 )
+z_index = 2
+
+[node name="TurnIndicator" parent="." instance=ExtResource( 7 )]
+
+[node name="PlayAgain" parent="." instance=ExtResource( 8 )]
+visible = false
+
+[connection signal="pressed" from="DrawButton" to="." method="_on_Button_pressed"]
